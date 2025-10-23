@@ -3,7 +3,6 @@ import serial
 import threading
 import time
 from queue import Queue, Empty
-from config import DEVICE_TYPE
 
 # Command queue and response storage
 send_queue = Queue()
@@ -50,6 +49,16 @@ def add_command_to_queue(command):
 def get_last_response(key):
     """Get the last response for a given key."""
     return responses.get(key)
+
+def wait_for_response(key, timeout=2.0):
+    """Wait for a response with the given key, up to timeout seconds."""
+    start = time.time()
+    while (time.time() - start) < timeout:
+        resp = responses.get(key)
+        if resp is not None:
+            return resp
+        time.sleep(0.05)
+    return None
 
 def _send_via_serial(cmd_str):
     s = _open_serial_once()
