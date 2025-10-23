@@ -52,7 +52,6 @@ def get_last_response(key):
 
 def wait_for_response(key, timeout=2.0):
     """Wait for a response with the given key, up to timeout seconds."""
-    import time
     start = time.time()
     while (time.time() - start) < timeout:
         resp = responses.get(key)
