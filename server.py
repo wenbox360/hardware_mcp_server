@@ -5,7 +5,6 @@ from resources import register_resources
 from tools import register_tools
 from prompts import register_prompts
 from sendQueue import start_send_queue_processor
-from tools import register_tools
 from readQueue import start_read_queue
 
 def setup_server() -> FastMCP:
