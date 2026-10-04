@@ -1,6 +1,4 @@
 # resources.py
-import uuid
-import time
 from typing import Dict, Any
 from fastmcp import FastMCP, Context
 from readQueue import get_recent_values
